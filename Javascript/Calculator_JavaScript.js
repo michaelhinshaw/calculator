@@ -20,6 +20,7 @@ function Input_Digit(digit) {
   } else {
     //this overwrites Display_Value if the current value is 0
     // otherwise it adds onto it
+    Calculator.Display_Value = Display_Value === '0' ? digit : Display_Value + digit;
   }
 }
 
@@ -27,7 +28,7 @@ function Input_Digit(digit) {
 function Input_Decimal(dot) {
   // this ensure that accidental clicking of the decimal point doesn't cause bugs in the the operation
   if (Calculator.Wait_Second_Operand === true) return;
-  if (!Calculator.Display_Value(dot)) {
+  if (!Calculator.Display_Value.includes(dot)) {
     // we are saying that if the Display_Value does not contain a decimal point
     // we want to add a decimal point
       Calculator.Display_Value += dot;
